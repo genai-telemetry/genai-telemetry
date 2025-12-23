@@ -6,7 +6,7 @@
 
 A **platform-agnostic observability SDK** for LLM/GenAI applications. Trace your AI workloads and send telemetry to any backend: Splunk, Elasticsearch, Datadog, Prometheus, OpenTelemetry, Grafana Loki, AWS CloudWatch, and more.
 
-## 🚀 Features
+## Features
 
 - **Zero Dependencies** - Core library has no external dependencies
 - **Multi-Backend Support** - Send traces to 10+ observability platforms
@@ -15,7 +15,7 @@ A **platform-agnostic observability SDK** for LLM/GenAI applications. Trace your
 - **Batching & Async** - Efficient background flushing for high-throughput apps
 - **Framework Agnostic** - Works with OpenAI, Anthropic, LangChain, LlamaIndex, etc.
 
-## 📦 Installation
+## Installation
 
 ```bash
 pip install genai-telemetry
@@ -24,7 +24,7 @@ pip install genai-telemetry
 pip install genai-telemetry[aws]
 ```
 
-## 🏃 Quick Start
+## Quick Start
 
 ### Basic Usage with Console Output
 
@@ -115,7 +115,7 @@ setup_telemetry(
 )
 ```
 
-## 📊 Available Decorators
+## Available Decorators
 
 ### `@trace_llm` - LLM Calls
 
@@ -168,7 +168,7 @@ def run_agent(task: str):
     return agent.execute(task)
 ```
 
-## 🔧 Supported Exporters
+## Supported Exporters
 
 | Exporter | Backend | Key Parameters |
 |----------|---------|----------------|
@@ -182,7 +182,7 @@ def run_agent(task: str):
 | `console` | Console/stdout | `colored`, `verbose` |
 | `file` | JSONL File | `file_path` |
 
-## 🎯 Auto Content Extraction
+## Auto Content Extraction
 
 Use `extract_content=True` to automatically extract the text content while still tracking tokens:
 
@@ -197,7 +197,7 @@ answer = chat("Hello!")  # answer is now just the string content
 print(answer)  # "Hello! How can I help you today?"
 ```
 
-## 📈 Span Data Schema
+## Span Data Schema
 
 Each span includes:
 
@@ -221,7 +221,7 @@ Each span includes:
 }
 ```
 
-## 🔄 Manual Span Creation
+## Manual Span Creation
 
 For more control, use the context manager:
 
@@ -250,7 +250,7 @@ telemetry.send_span(
 )
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 genai_telemetry/
@@ -274,14 +274,10 @@ genai_telemetry/
     └── multi.py         # Multi-exporter
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## 📄 License
+## License
 
 Apache 2.0 - see [LICENSE](LICENSE) for details.
-
-## 🙏 Acknowledgments
-
-Built with ❤️ by [Kamal Singh Bisht](https://github.com/kamalsinghbisht)
