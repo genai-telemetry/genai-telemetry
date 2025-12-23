@@ -1,0 +1,127 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genai-telemetry"
+version = "1.0.3"
+description = "Platform-agnostic observability SDK for LLM/GenAI applications"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Kamal Singh Bisht", email = "kamal@example.com"}
+]
+maintainers = [
+    {name = "Kamal Singh Bisht", email = "kamal@example.com"}
+]
+keywords = [
+    "llm",
+    "genai",
+    "telemetry",
+    "observability",
+    "tracing",
+    "openai",
+    "anthropic",
+    "splunk",
+    "elasticsearch",
+    "datadog",
+    "prometheus",
+    "opentelemetry",
+    "monitoring",
+    "apm",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Monitoring",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.optional-dependencies]
+aws = ["boto3>=1.26.0"]
+all = ["boto3>=1.26.0"]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/kamalsinghbisht/genai-telemetry"
+Documentation = "https://github.com/kamalsinghbisht/genai-telemetry#readme"
+Repository = "https://github.com/kamalsinghbisht/genai-telemetry.git"
+Issues = "https://github.com/kamalsinghbisht/genai-telemetry/issues"
+Changelog = "https://github.com/kamalsinghbisht/genai-telemetry/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["genai_telemetry*"]
+
+[tool.setuptools.package-data]
+genai_telemetry = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by black)
+    "B008",  # do not perform function calls in argument defaults
+]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v"
+
+[tool.coverage.run]
+source = ["genai_telemetry"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
