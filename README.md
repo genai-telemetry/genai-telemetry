@@ -4,11 +4,11 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A **platform-agnostic observability SDK** for LLM/GenAI applications. Trace your AI workloads and send telemetry to any backend: Splunk, Elasticsearch, Datadog, Prometheus, OpenTelemetry, Grafana Loki, AWS CloudWatch, and more.
+A **Platform-agnostic observability for LLM and GenAI applications.**
+Trace AI workloads and export telemetry to any backend, including Splunk, Elasticsearch, Datadog, Prometheus, OpenTelemetry, Grafana Loki, AWS CloudWatch, and more
 
 ## Features
 
-- **Zero Dependencies** - Core library has no external dependencies
 - **Multi-Backend Support** - Send traces to 10+ observability platforms
 - **Simple Decorators** - Instrument your code with minimal changes
 - **Token Tracking** - Automatically capture input/output token counts
