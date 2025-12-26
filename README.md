@@ -91,7 +91,7 @@ setup_telemetry(
 )
 ```
 
-### With OpenTelemetry (prometheus, Jaeger, Tempo, etc.)
+### With OpenTelemetry (Prometheus, Jaeger, Tempo, etc.)
 
 ```python
 setup_telemetry(
