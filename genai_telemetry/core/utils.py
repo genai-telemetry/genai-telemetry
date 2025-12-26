@@ -13,6 +13,7 @@ def extract_tokens_from_response(response: Any) -> Tuple[int, int]:
     - OpenAI ChatCompletion responses
     - OpenAI Completion responses
     - Anthropic Message responses
+    - LangChain AIMessage responses
     - Dict responses
     
     Args:
@@ -23,6 +24,14 @@ def extract_tokens_from_response(response: Any) -> Tuple[int, int]:
     """
     input_tokens = 0
     output_tokens = 0
+    
+    # LangChain AIMessage - check usage_metadata first
+    if hasattr(response, "usage_metadata") and response.usage_metadata is not None:
+        usage = response.usage_metadata
+        if isinstance(usage, dict):
+            input_tokens = usage.get("input_tokens", 0) or 0
+            output_tokens = usage.get("output_tokens", 0) or 0
+            return (input_tokens, output_tokens)
     
     # Check if response has usage attribute
     if hasattr(response, "usage") and response.usage is not None:
@@ -46,6 +55,17 @@ def extract_tokens_from_response(response: Any) -> Tuple[int, int]:
                 output_tokens = getattr(usage, "output_tokens", 0) or 0
                 return (input_tokens, output_tokens)
     
+    # LangChain response_metadata (alternative location)
+    if hasattr(response, "response_metadata") and response.response_metadata:
+        metadata = response.response_metadata
+        if isinstance(metadata, dict):
+            # Check for token_usage in response_metadata
+            token_usage = metadata.get("token_usage", {})
+            if token_usage:
+                input_tokens = token_usage.get("prompt_tokens", 0) or 0
+                output_tokens = token_usage.get("completion_tokens", 0) or 0
+                return (input_tokens, output_tokens)
+    
     # Dict response (some libraries return this)
     if isinstance(response, dict):
         usage = response.get("usage", {})
@@ -58,6 +78,13 @@ def extract_tokens_from_response(response: Any) -> Tuple[int, int]:
             elif "input_tokens" in usage:
                 input_tokens = usage.get("input_tokens", 0) or 0
                 output_tokens = usage.get("output_tokens", 0) or 0
+            return (input_tokens, output_tokens)
+        
+        # LangChain dict style
+        usage_metadata = response.get("usage_metadata", {})
+        if usage_metadata:
+            input_tokens = usage_metadata.get("input_tokens", 0) or 0
+            output_tokens = usage_metadata.get("output_tokens", 0) or 0
             return (input_tokens, output_tokens)
     
     return (input_tokens, output_tokens)
@@ -78,6 +105,10 @@ def extract_content_from_response(response: Any, model_provider: str = "openai")
     if isinstance(response, str):
         return response
     
+    # LangChain AIMessage - has content as string directly
+    if hasattr(response, "content") and isinstance(response.content, str):
+        return response.content
+    
     # OpenAI ChatCompletion
     if hasattr(response, "choices") and response.choices:
         choice = response.choices[0]
@@ -87,7 +118,7 @@ def extract_content_from_response(response: Any, model_provider: str = "openai")
         if hasattr(choice, "text"):
             return choice.text or ""
     
-    # Anthropic Message
+    # Anthropic Message - content is a list of blocks
     if hasattr(response, "content") and isinstance(response.content, list):
         texts = []
         for block in response.content:
@@ -111,6 +142,9 @@ def extract_content_from_response(response: Any, model_provider: str = "openai")
                 if isinstance(block, dict) and "text" in block:
                     texts.append(block["text"])
             return "".join(texts)
+        # Simple content field
+        if "content" in response and isinstance(response["content"], str):
+            return response["content"]
     
     return str(response)
 
