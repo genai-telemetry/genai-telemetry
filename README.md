@@ -251,30 +251,6 @@ telemetry.send_span(
 )
 ```
 
-## Architecture
-
-```
-genai_telemetry/
-├── __init__.py          # Public API exports
-├── core/
-│   ├── telemetry.py     # Main telemetry manager
-│   ├── span.py          # Span class
-│   ├── decorators.py    # @trace_* decorators
-│   └── utils.py         # Token extraction helpers
-└── exporters/
-    ├── base.py          # BaseExporter interface
-    ├── splunk.py        # Splunk HEC
-    ├── elasticsearch.py # Elasticsearch
-    ├── otlp.py          # OpenTelemetry
-    ├── datadog.py       # Datadog
-    ├── prometheus.py    # Prometheus
-    ├── loki.py          # Grafana Loki
-    ├── cloudwatch.py    # AWS CloudWatch
-    ├── console.py       # Console output
-    ├── file.py          # File output
-    └── multi.py         # Multi-exporter
-```
-
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
