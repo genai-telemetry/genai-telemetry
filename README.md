@@ -4,16 +4,32 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-A **Platform-agnostic observability for LLM and GenAI applications.**
-Trace AI workloads and export telemetry to any backend, including Splunk, Elasticsearch, Datadog, Prometheus, OpenTelemetry, Grafana Loki, AWS CloudWatch, and more
+A **platform-agnostic observability SDK for Generative AI and LLM applications.**
+Instrument GenAI workloads to trace prompts, token usage, latency, errors,
+and cost, and export telemetry to enterprise backends such as Splunk
+, Elasticsearch, Datadog, Prometheus, OpenTelemetry, Grafana Loki,
+AWS CloudWatch, and more.
 
 ## Features
 
-- **Multi-Backend Support** - Send traces to 10+ observability platforms
-- **Simple Decorators** - Instrument your code with minimal changes
+- **Multi-Backend Support** - Send telemetry to 10+ backends: Splunk, Elasticsearch, Grafana, Datadog, Prometheus, and more
+- **One-Line Instrumentation** - Simple decorators for LLM calls, embeddings, retrievers, tools, chains, and agents
 - **Token Tracking** - Automatically capture input/output token counts
+- **Cost Estimation** - Real-time cost calculation based on model pricing and token usage
 - **Batching & Async** - Efficient background flushing for high-throughput apps
 - **Framework Agnostic** - Works with OpenAI, Anthropic, LangChain, LlamaIndex, etc.
+- **Lightweight Core** - No heavy dependencies—uses Python standard library for core functionality
+
+
+## Production Use: Splunk App
+
+genai-telemetry is used as the telemetry SDK powering a published Splunk app https://splunkbase.splunk.com/app/2779 
+for monitoring Generative AI workloads.
+The SDK sends GenAI telemetry directly to Splunk via the HTTP Event Collector (HEC),
+enabling production-grade ingestion without intermediate collectors.
+
+## Architecture Overview
+<img width="500" height="515" alt="image" src="https://github.com/user-attachments/assets/62819e91-0cad-43fc-8bf6-f0964fae309b" />
 
 ## Installation
 
@@ -21,10 +37,6 @@ Trace AI workloads and export telemetry to any backend, including Splunk, Elasti
 pip install genai-telemetry
 
 ```
-## Architecture
-<img width="500" height="515" alt="image" src="https://github.com/user-attachments/assets/62819e91-0cad-43fc-8bf6-f0964fae309b" />
-
-
 ## Quick Start
 
 ### Basic Usage with Console Output
