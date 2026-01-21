@@ -8,7 +8,7 @@ Maintainers are responsible for the overall direction and health of the project.
 
 | Name | GitHub | Email | Organization | Role | Since |
 |------|--------|-------|--------------|------|-------|
-| Kamal Singh Bisht | [@kamalbisht](https://github.com/kamalbisht) | kamal.bisht@example.com | Capital One | Lead Maintainer | 2024-01 |
+| Kamal Singh Bisht | [@kamalbisht](https://github.com/kamalbisht) | kamal.bisht@example.com | | Lead Maintainer | 2024-01 |
 
 ## Committers
 
