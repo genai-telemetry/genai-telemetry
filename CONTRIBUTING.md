@@ -350,12 +350,3 @@ git rebase -i HEAD~N  # N = number of commits
 # Mark commits as 'edit', then amend each with -s
 ```
 
-## Questions?
-
-- Open a [GitHub Discussion](https://github.com/genai-telemetry/genai-telemetry/discussions)
-- Join our Slack channel (via LF AI Slack)
-- Email: info@genai-telemetry.io
-
----
-
-Thank you for contributing to GenAI Telemetry! 🎉
