@@ -1,52 +1,90 @@
 # Changelog
+All notable changes to the genai-telemetry SDK will be documented in this file.
+The format is based on Keep a Changelog,
+and this project adheres to Semantic Versioning.
+## Version (0.6.0 - 2026-01-21)
+## Added
+Adding CHANGELOG.md
 
-All notable changes to this project will be documented in this file.
+Adding CONTRIBUTING.md
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+Adding CODE_OF_CONDUCT.md
 
-## [1.0.3] - 2024-12-23
+Updating LICENSE
+## Version (0.5.1 - 2026-01-20)
+## Changed
+Delete java directory
 
-### Fixed
-- Fixed token extraction to work even when returning `response.choices[0].message.content`
-- Added automatic OpenAI/Anthropic client response interception
+Delete js directory
+## Version (0.5.0 - 2026-01-08)
+## Added
+adding java sdk
 
-### Added
-- Added `extract_content` parameter to `@trace_llm` decorator to automatically extract content while preserving token counts
-- Added helper functions `extract_tokens_from_response()` and `extract_content_from_response()`
+adding javascript sdk
+## Changed
+Improved batch processing performance for high-throughput applications
+## Version (0.4.2 - 2025-12-26)
+## Changed
+Update Splunk app link in README
+## Version 0.4.1 - 2025-12-26
+## Changed
+Update utils.py
 
-## [1.0.2] - 2024-12-15
+Update README.md
+## Version (0.4.0 - 2025-12-24)
+## Added
+Datadog APM exporter
 
-### Added
-- AWS CloudWatch Logs exporter
-- File exporter with rotation support
-- Multi-exporter for sending to multiple backends
+AWS CloudWatch Logs exporter
 
-### Changed
-- Improved batch processing performance
-- Better error handling in all exporters
+Grafana Loki exporter
 
-## [1.0.1] - 2024-12-01
+Prometheus Push Gateway exporter
 
-### Added
-- Prometheus Push Gateway exporter
-- Grafana Loki exporter
-- Health check methods for all exporters
+OpenTelemetry Protocol (OTLP) exporter
 
-### Fixed
-- Thread safety issues in batch processing
-- Memory leak in long-running applications
+Multi-exporter support for sending telemetry to multiple backends simultaneously
+## Fixed
+Token counting accuracy for streaming responses
+## Version (0.3.0 - 2025-12-23)
+## Added
+Initial release of genai-telemetry SDK
 
-## [1.0.0] - 2024-11-15
+Core telemetry manager and span classes
 
-### Added
-- Initial release
-- Splunk HEC exporter
-- Elasticsearch exporter
-- OpenTelemetry (OTLP) exporter
-- Datadog exporter
-- Console exporter for development
-- Decorators: `@trace_llm`, `@trace_embedding`, `@trace_retrieval`, `@trace_tool`, `@trace_chain`, `@trace_agent`
-- Automatic token extraction from OpenAI and Anthropic responses
-- Batching and async flushing support
-- Context manager for manual span creation
+Tracing decorators for LLM operations:
+
+@trace_llm - Trace LLM/chat completions
+
+@trace_embedding - Trace embedding operations
+
+@trace_retrieval - Trace vector store retrievals
+
+@trace_tool - Trace tool/function calls
+
+@trace_chain - Trace LLM chains/pipelines
+
+@trace_agent - Trace autonomous agents
+
+## Exporters:
+Splunk HTTP Event Collector (HEC)
+
+Elasticsearch/OpenSearch
+
+Console output (for debugging)
+
+JSON Lines file exporter
+
+Automatic token extraction from OpenAI and Anthropic responses
+
+Configurable batch processing
+
+Python 3.8+ support
+
+## Documentation
+
+Comprehensive README with quick start guide
+
+Exporter-specific documentation
+
+Usage examples for all decorators
