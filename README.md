@@ -25,7 +25,7 @@ client = OpenAI()
 response = client.chat.completions.create(model="gpt-4o", messages=[...])  # ✓ Traced!
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -83,7 +83,7 @@ def chat(message: str):
 result = chat("Hello!")
 ```
 
-## 🔧 Supported Frameworks (Auto-Instrumentation)
+## Supported Frameworks (Auto-Instrumentation)
 
 | Framework | What's Traced | Status |
 |-----------|--------------|--------|
@@ -222,7 +222,7 @@ setup_telemetry(
 ```
 </details>
 
-## 🏷️ Available Decorators
+## Available Decorators
 
 For fine-grained control, use decorators on specific functions:
 
@@ -278,7 +278,7 @@ def run_agent(task: str):
     return agent.execute(task)
 ```
 
-## 📈 What Gets Captured
+## What Gets Captured
 
 Every trace includes:
 
@@ -302,7 +302,7 @@ Every trace includes:
 }
 ```
 
-## 🖥️ Production Use: Splunk App
+## Production Use: Splunk App
 
 genai-telemetry powers the **[GenAI Observability for Splunk](https://splunkbase.splunk.com/app/8308)** app on Splunkbase — a production-grade monitoring solution for GenAI workloads with:
 
@@ -311,7 +311,7 @@ genai-telemetry powers the **[GenAI Observability for Splunk](https://splunkbase
 - 💰 Real-time cost tracking and optimization recommendations
 - ⚠️ Pre-built alerts for errors, latency spikes, and cost anomalies
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -340,7 +340,7 @@ genai-telemetry powers the **[GenAI Observability for Splunk](https://splunkbase
     └──────────┘    └──────────┘    └──────────┘
 ```
 
-## 🔧 Advanced Usage
+## Advanced Usage
 
 ### Manual Span Creation
 
@@ -384,7 +384,7 @@ answer = chat("Hello!")  # Returns just the string content
 print(answer)  # "Hello! How can I help you today?"
 ```
 
-## 🆚 Why genai-telemetry?
+## Why genai-telemetry?
 
 | Feature | genai-telemetry | LangSmith | Langfuse | Phoenix |
 |---------|-----------------|-----------|----------|---------|
@@ -395,7 +395,7 @@ print(answer)  # "Hello! How can I help you today?"
 | Self-Hosted | ✅ | Enterprise only | ✅ | ✅ |
 | Vendor Neutral | ✅ | ❌ LangChain-focused | ✅ | ✅ |
 
-## 📚 Examples
+## Examples
 
 See the [`examples/`](examples/) directory for complete working examples:
 
@@ -404,7 +404,7 @@ See the [`examples/`](examples/) directory for complete working examples:
 - [`rag_pipeline.py`](examples/rag_pipeline.py) — RAG pipeline with retrieval + generation
 - [`multi_backend.py`](examples/multi_backend.py) — Sending to multiple backends
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
@@ -412,7 +412,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for gui
 
 Apache 2.0 — see [LICENSE](LICENSE) for details.
 
-## 🔗 Links
+## Links
 
 - **PyPI**: [pypi.org/project/genai-telemetry](https://pypi.org/project/genai-telemetry/)
 - **Splunk App**: [splunkbase.splunk.com/app/8308](https://splunkbase.splunk.com/app/8308)
