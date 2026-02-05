@@ -6,10 +6,10 @@ A platform-agnostic telemetry library for tracing GenAI/LLM applications.
 Supports multiple backends: Splunk, Elasticsearch, OpenTelemetry, Datadog,
 Prometheus, Grafana Loki, AWS CloudWatch, and more.
 
-Usage:
-    from genai_telemetry import setup_telemetry, trace_llm
+Quick Start (Zero-Code Auto-Instrumentation):
+    from genai_telemetry import setup_telemetry, auto_instrument
     
-    # Splunk
+    # Setup telemetry
     setup_telemetry(
         workflow_name="my-app",
         exporter="splunk",
@@ -17,29 +17,51 @@ Usage:
         splunk_token="your-token"
     )
     
-    # Elasticsearch
-    setup_telemetry(
-        workflow_name="my-app",
-        exporter="elasticsearch",
-        es_hosts=["http://localhost:9200"]
-    )
+    # Enable auto-instrumentation - that's it!
+    auto_instrument()
     
-    # OpenTelemetry (Datadog, Jaeger, etc.)
+    # Now all LLM calls are automatically traced
+    from openai import OpenAI
+    client = OpenAI()
+    response = client.chat.completions.create(...)  # Automatically traced!
+
+Manual Instrumentation (Decorator-based):
+    from genai_telemetry import setup_telemetry, trace_llm
+    
     setup_telemetry(
         workflow_name="my-app",
-        exporter="otlp",
-        otlp_endpoint="http://localhost:4317"
+        exporter="splunk",
+        splunk_url="http://splunk:8088",
+        splunk_token="your-token"
     )
     
     @trace_llm(model_name="gpt-4o", model_provider="openai")
     def chat(message):
         return client.chat.completions.create(...)
 
+Supported Frameworks (Auto-Instrumentation):
+    - OpenAI Python SDK
+    - Anthropic Python SDK
+    - Google Generative AI (Gemini)
+    - LangChain / LangChain-Core
+    - LlamaIndex
+
+Supported Backends:
+    - Splunk (HEC)
+    - Elasticsearch
+    - OpenTelemetry (OTLP)
+    - Datadog
+    - Prometheus Push Gateway
+    - Grafana Loki
+    - AWS CloudWatch
+    - File (JSONL)
+    - Console
+
 Author: Kamal Singh Bisht
 License: Apache-2.0
 """
 
-__version__ = "1.0.3"
+__version__ = "1.1.0"
 __author__ = "Kamal Singh Bisht"
 
 # Core components
@@ -60,6 +82,14 @@ from genai_telemetry.core.decorators import (
 from genai_telemetry.core.utils import (
     extract_tokens_from_response,
     extract_content_from_response,
+)
+
+# Auto-instrumentation
+from genai_telemetry.instrumentation import (
+    auto_instrument,
+    uninstrument,
+    get_instrumented_frameworks,
+    is_instrumented,
 )
 
 # Base exporter
@@ -87,6 +117,12 @@ __all__ = [
     "get_telemetry",
     "GenAITelemetry",
     "Span",
+    
+    # Auto-instrumentation
+    "auto_instrument",
+    "uninstrument",
+    "get_instrumented_frameworks",
+    "is_instrumented",
     
     # Decorators
     "trace_llm",

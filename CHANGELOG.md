@@ -2,6 +2,47 @@
 All notable changes to the genai-telemetry SDK will be documented in this file.
 The format is based on Keep a Changelog,
 and this project adheres to Semantic Versioning.
+
+## Version 1.1.0 - 2026-02-05
+
+### Added - Auto-Instrumentation (Major Feature)
+
+**Zero-code instrumentation for popular LLM frameworks.** Simply call `auto_instrument()` and all LLM calls are automatically traced!
+
+```python
+from genai_telemetry import setup_telemetry, auto_instrument
+
+setup_telemetry(workflow_name="my-app", exporter="splunk", ...)
+auto_instrument()  # That's it! All LLM calls are now traced.
+```
+
+#### Supported Frameworks:
+- **OpenAI Python SDK** - chat completions, embeddings (sync & async)
+- **Anthropic Python SDK** - messages API (sync & async)
+- **Google Generative AI (Gemini)** - generate_content, embeddings
+- **LangChain / LangChain-Core** - LLMs, chains, agents, retrievers, tools, embeddings
+- **LlamaIndex** - query engines, retrievers, LLMs, embeddings
+
+#### New Functions:
+- `auto_instrument()` - Enable automatic tracing for all installed frameworks
+- `auto_instrument(frameworks=["openai", "langchain"])` - Instrument specific frameworks
+- `auto_instrument(exclude=["anthropic"])` - Exclude specific frameworks
+- `uninstrument()` - Remove all instrumentation
+- `get_instrumented_frameworks()` - List currently instrumented frameworks
+- `is_instrumented("openai")` - Check if a framework is instrumented
+
+### New Files:
+- `genai_telemetry/instrumentation/` - New instrumentation module
+- `genai_telemetry/instrumentation/auto.py` - Main auto_instrument orchestrator
+- `genai_telemetry/instrumentation/base.py` - BaseInstrumentor class
+- `genai_telemetry/instrumentation/openai_inst.py` - OpenAI instrumentor
+- `genai_telemetry/instrumentation/anthropic_inst.py` - Anthropic instrumentor
+- `genai_telemetry/instrumentation/langchain_inst.py` - LangChain instrumentor
+- `genai_telemetry/instrumentation/llamaindex_inst.py` - LlamaIndex instrumentor
+- `genai_telemetry/instrumentation/google_inst.py` - Google AI instrumentor
+- `examples/auto_instrument_example.py` - Usage examples
+- `tests/test_auto_instrument.py` - Test suite (18 tests)
+
 ## Version (0.6.0 - 2026-01-21)
 ## Added
 Adding CHANGELOG.md
