@@ -124,7 +124,7 @@ uninstrument()                        # Remove all
 uninstrument(frameworks=["openai"])   # Remove specific
 ```
 
-## 📊 Supported Backends
+## Supported Backends
 
 Export telemetry to **10+ observability platforms**:
 
@@ -306,10 +306,10 @@ Every trace includes:
 
 genai-telemetry powers the **[GenAI Observability for Splunk](https://splunkbase.splunk.com/app/8308)** app on Splunkbase — a production-grade monitoring solution for GenAI workloads with:
 
-- 📊 7 pre-built dashboards (Overview, LLM Performance, RAG Analytics, Cost Management, etc.)
-- 🔍 Trace Explorer for debugging individual requests
-- 💰 Real-time cost tracking and optimization recommendations
-- ⚠️ Pre-built alerts for errors, latency spikes, and cost anomalies
+- 7 pre-built dashboards (Overview, LLM Performance, RAG Analytics, Cost Management, etc.)
+- Trace Explorer for debugging individual requests
+- Real-time cost tracking and optimization recommendations
+- Pre-built alerts for errors, latency spikes, and cost anomalies
 
 ## Architecture
 
