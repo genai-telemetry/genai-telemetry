@@ -418,9 +418,3 @@ Apache 2.0 — see [LICENSE](LICENSE) for details.
 - **Splunk App**: [splunkbase.splunk.com/app/8308](https://splunkbase.splunk.com/app/8308)
 - **GitHub**: [github.com/kamalsinghbisht/genai-telemetry](https://github.com/kamalsinghbisht/genai-telemetry)
 - **Changelog**: [CHANGELOG.md](CHANGELOG.md)
-
----
-
-**Made with ❤️ by [Kamal Singh Bisht](https://github.com/kamalsinghbisht)**
-
-*IEEE Senior Member | IETE Fellow | Principal Application Engineer*
