@@ -9,7 +9,7 @@
 
 Trace prompts, completions, token usage, latency, errors, and costs across OpenAI, Anthropic, LangChain, LlamaIndex, and more. Export to 10+ backends including Splunk, Elasticsearch, Datadog, and Prometheus.
 
-## What's New in v1.1.0: Zero-Code Auto-Instrumentation
+## What's New in v1.1.1: Zero-Code Auto-Instrumentation
 
 **No more decorators on every function!** Just call `auto_instrument()` and all your LLM calls are automatically traced:
 
@@ -418,9 +418,3 @@ Apache 2.0 — see [LICENSE](LICENSE) for details.
 - **Splunk App**: [splunkbase.splunk.com/app/8308](https://splunkbase.splunk.com/app/8308)
 - **GitHub**: [github.com/kamalsinghbisht/genai-telemetry](https://github.com/kamalsinghbisht/genai-telemetry)
 - **Changelog**: [CHANGELOG.md](CHANGELOG.md)
-
----
-
-**Made with ❤️ by [Kamal Singh Bisht](https://github.com/kamalsinghbisht)**
-
-*IEEE Senior Member | IETE Fellow | Principal Application Engineer*
